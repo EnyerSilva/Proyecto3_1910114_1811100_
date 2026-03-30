@@ -39,8 +39,26 @@ class AlfonsoJose{
             val deltaFila = intArrayOf(0, 0, 1, -1)
             val deltaCol = intArrayOf(1, -1, 0, 0)
 
-            
-        }
+            while (frontera.isNotEmpty()) {
+                val actual = fromntera.poll()
+                
+                for (i in 0 until 4) {
+                    val nuevaFila = actual.fila + deltaFila[i]
+                    val nuevaCol = actual.col + deltaCol[i]
 
+                    if (nuevaFila in 0 until n && nuevaCol in 0 until m && !visitado[nuevaFila][nuevaCol]) {
+                        visitado[nuevaFila][nuevaCol] = true
+
+                        if (matriz[nuevaFila][nuevaCol] < actual.altura) {
+                            totalCubosAgua += actual.altura - matriz[nuevaFila][nuevaCol]
+                            frontera.add(NodoTorre(nuevaFila, nuevaCol, actual.altura))
+                        } else {
+                            frontera.add(NodoTorre(nuevaFila, nuevaCol, matriz[nuevaFila][nuevaCol]))
+                        }
+                    }
+                }
+            }
+            return totalCubosAgua
+        }
     }
 }
