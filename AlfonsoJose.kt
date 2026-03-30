@@ -6,8 +6,7 @@ class AlfonsoJose{
     companion object {
         @JvmStatic
         fun main(args: Array<String>) {
-            val nombreArchivo = "atlantis.txt"
-            val archivo = File(nombreArchivo)
+            val archivo = java.io.File("atlantis.txt")
 
             if (!archivo.exists()) return
 
@@ -24,7 +23,7 @@ class AlfonsoJose{
 
         private fun calcularAguaAtrapada(matriz: Array<IntArray>, n: Int, m: Int): Int {
             val visitado = Array(n) { BooleanArray(m) }
-            val frontera = PriorityQueue<NodoTorre>()
+            val frontera = java.util.PriorityQueue<NodoTorre>()
 
             for (i in 0 until n) {
                 for (j in 0 until m) {
