@@ -22,7 +22,25 @@ class AlfonsoJose{
             println(calcularAguaAtrapada(matriz, n, m))
         }
 
-        
+        private fun calcularAguaAtrapada(matriz: Array<IntArray>, n: Int, m: Int): Int {
+            val visitado = Array(n) { BooleanArray(m) }
+            val frontera = PriorityQueue<NodoTorre>()
+
+            for (i in 0 until n) {
+                for (j in 0 until m) {
+                    if (i == 0 || i == n - 1 || j == 0 || j == m - 1) {
+                        frontera.add(NodoTorre(i , j, matriz[i][j]))
+                        visitado[i][j] = true
+                    }
+                }
+            }
+
+            var totalCubosAgua = 0
+            val deltaFila = intArrayOf(0, 0, 1, -1)
+            val deltaCol = intArrayOf(1, -1, 0, 0)
+
+            
+        }
 
     }
 }
