@@ -2,7 +2,7 @@ data class NodoTorre(val fila: Int, val col: Int, val altura: Int) : Comparable<
     override fun compareTo(other: NodoTorre): Int = this.altura.compareTo(other.altura)
 }
 
-class AlfonsoJose{
+class AlfonsoJose {
     companion object {
         @JvmStatic
         fun main(args: Array<String>) {
@@ -11,11 +11,13 @@ class AlfonsoJose{
             if (!archivo.exists()) return
 
             val lineas = archivo.readLines()
-            if (lines.isEmpty()) return
+            if (lineas.isEmpty()) return
 
             val n = lineas.size
-            val m = lines[0].length
-            val matriz = Array(n) { i -> lineas[i].map { it.toString().toInt() } .toIntArray()
+            val m = lineas[0].length
+            
+            val matriz = Array(n) { i -> 
+                lineas[i].map { it.toString().toInt() }.toIntArray()
             }
 
             println(calcularAguaAtrapada(matriz, n, m))
@@ -23,12 +25,13 @@ class AlfonsoJose{
 
         private fun calcularAguaAtrapada(matriz: Array<IntArray>, n: Int, m: Int): Int {
             val visitado = Array(n) { BooleanArray(m) }
+            
             val frontera = java.util.PriorityQueue<NodoTorre>()
 
             for (i in 0 until n) {
                 for (j in 0 until m) {
                     if (i == 0 || i == n - 1 || j == 0 || j == m - 1) {
-                        frontera.add(NodoTorre(i , j, matriz[i][j]))
+                        frontera.add(NodoTorre(i, j, matriz[i][j]))
                         visitado[i][j] = true
                     }
                 }
@@ -39,7 +42,7 @@ class AlfonsoJose{
             val deltaCol = intArrayOf(1, -1, 0, 0)
 
             while (frontera.isNotEmpty()) {
-                val actual = fromntera.poll()
+                val actual = frontera.poll()
                 
                 for (i in 0 until 4) {
                     val nuevaFila = actual.fila + deltaFila[i]
