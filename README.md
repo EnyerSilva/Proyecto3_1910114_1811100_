@@ -6,20 +6,20 @@
 
 # Pasos de Ejecucion
 1. Instalar Kotlin:
-    - Desde tu terminal de WSL ejecuta el siguiente comando:
+    - Desde tu terminal ejecuta el siguiente comando:
         - sudo apt install kotlin
 
 2. Ubica tu entorno:
-    - Desde tu terminal de WSL ejecuta el siguiente comando:
+    - Desde tu terminal ejecuta el siguiente comando:
         - cd ubicacion/de/tu/entorno
 
 3. Compila el archivo "AlfonsoJose.kt":
-    - Desde tu terminal de WSL ejecuta el siguiente comando:
+    - Desde tu terminal ejecuta el siguiente comando:
         - kotlinc AlfonsoJose.kt -include-runtime -d AlfonsoJose.jar
 
 4. Ejecuta el archivo para calcular el volumen de agua:
     - Asegúrate de tener el archivo de entrada "atlantis.txt" en el mismo directorio.
-    - Desde tu terminal de WSL ejecuta el siguiente comando:
+    - Desde tu terminal ejecuta el siguiente comando:
         - java -jar AlfonsoJose.jar
 
 Al compilar se crea un archivo "AlfonsoJose.jar" en tu entorno que contiene el programa empaquetado y listo para correr.
