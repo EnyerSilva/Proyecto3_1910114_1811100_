@@ -16,7 +16,9 @@ class AlfonsoJose {
             // Validamos que el archivo exista antes de intentar leerlo
             if (!archivo.exists()) return
 
-            val lineas = archivo.readLines()
+            val lineas = archivo.readLines().filter { it.isNotBlank() }
+
+            // Validamos que no este vacío
             if (lineas.isEmpty()) return
 
             val n = lineas.size
@@ -41,6 +43,7 @@ class AlfonsoJose {
             // Agregamos los bordes como nuestra frontera inicial de escape
             for (i in 0 until n) {
                 for (j in 0 until m) {
+                    // Agregamos el agua solo en los bordes
                     if (i == 0 || i == n - 1 || j == 0 || j == m - 1) {
                         frontera.add(NodoTorre(i, j, matriz[i][j]))
                         visitado[i][j] = true
@@ -56,6 +59,7 @@ class AlfonsoJose {
             while (frontera.isNotEmpty()) {
                 val actual = frontera.poll()
                 
+                // Exploramos los vecinos del nodo actual
                 for (i in 0 until 4) {
                     val nuevaFila = actual.fila + deltaFila[i]
                     val nuevaCol = actual.col + deltaCol[i]
